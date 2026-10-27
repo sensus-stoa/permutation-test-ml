@@ -6,6 +6,11 @@ venv/
 .env
 .ipynb_checkpoints/
 .DS_Store
-# машиночитаемые результаты игнорируются, кроме .gitkeep
+# machine-readable results are ignored, except .gitkeep
 results/*
 !results/.gitkeep
+
+# operational files: outreach journal, contact lists, message drafts
+SIGNALS.md
+CONTACTS.md
+drafts/
