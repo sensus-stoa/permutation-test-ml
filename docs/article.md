@@ -157,4 +157,4 @@ python experiments/repeated_runs.py --runs 50 --n-permutations 200
 ```
 
 Seeds are fixed, dependencies are pinned in `requirements.txt`.
-Repository: [link to be added at publication].
+Repository: https://github.com/sensus-stoa/permutation-test-ml

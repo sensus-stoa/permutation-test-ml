@@ -14,7 +14,7 @@ whole search procedure under a specific null hypothesis".
 
 ## Article
 
-Full article: [to be added at publication].
+Full article: [Permutation Test for ML: What Null Hypothesis It Tests and What It Does Not Prove](https://medium.com/@Ninja_Cat/permutation-test-for-ml-what-null-hypothesis-it-tests-and-what-it-does-not-prove-7a3224809251)
 
 ## What is here
 
