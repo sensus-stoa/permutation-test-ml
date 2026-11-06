@@ -1,7 +1,7 @@
 # Permutation testing for machine learning:
 # which null hypothesis it tests, and what it does not prove
 
-Evgeny Dolgov, independent researcher, CV->0 program.
+Evgeniy Dolgov, independent researcher, CV->0 program.
 
 **Disclosure:** AI tools were used in preparing the code and text.
 

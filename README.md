@@ -2,7 +2,7 @@
 # which null hypothesis it tests, and what it does not prove
 
 > **Disclosure:** AI tools were used in preparing the code and text.
-> Author: Evgeny Dolgov, independent researcher, CV->0 program.
+> Author: Evgeniy Dolgov, independent researcher, CV->0 program.
 > Contact: [to be filled in at publication].
 >
 > Russian version: [README.ru.md](README.ru.md).
