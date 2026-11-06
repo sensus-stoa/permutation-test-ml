@@ -12,6 +12,10 @@
 We test not "is there signal" but "how unusual is the result of the
 whole search procedure under a specific null hypothesis".
 
+## Article
+
+Full article: [to be added at publication].
+
 ## What is here
 
 - **Part A.** Data with a planted linear dependence. The test returns
@@ -37,6 +41,10 @@ evaluation), not one fixed model. This matches the system-level null
 calibration of the CV->0 adjudication protocol (section 0.7,
 doi:10.5281/zenodo.23599882): run the whole pipeline on label-shuffled
 data and count false acceptances.
+
+Test statistic `T`: the R^2 metric on the holdout set for the candidate
+with the best R^2 on the training set among all one-feature and
+two-feature linear regressions built by `search_procedure`.
 
 ## Run
 
@@ -95,6 +103,8 @@ above).
 - Coverage of all dependence structures (only a shared trend here)
 - A correct structure-preserving null for Part C
   (for example differencing the series, or a block bootstrap)
+- More than 200 permutations. With 200, the minimum achievable
+  p-value is ≈ 1/201 ≈ 0.005
 
 ## Extended limitations
 
