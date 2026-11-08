@@ -1,7 +1,7 @@
 {
   "schema": "trust-manifest/v3.5",
   "protocol_version": "CV0-TrustLayer-v3.5",
-  "date": "2026-11-09",
+  "date": "2026-11-08",
   "object": {
     "repo": "https://github.com/sensus-stoa/permutation-test-ml",
     "commit": "8b3058bf75afae31f4887e25b260611580c9ce73"
