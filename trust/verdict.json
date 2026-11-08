@@ -1,0 +1,78 @@
+{
+  "schema": "trust-verdict/v3.5",
+  "verdict_id": "V-PTM-001",
+  "date": "2026-11-09",
+  "valid_until": "object-change",
+  "object_version": "8b3058bf75afae31f4887e25b260611580c9ce73",
+  "protocol_version": "CV0-TrustLayer-v3.5",
+  "executor": "Evgeniy Dolgov (author)",
+  "verifier": "Evgeniy Dolgov (author). Independent reproduction: NONE yet. Author-verification is not labeled independent.",
+  "claims": [
+    {
+      "id": "C-01",
+      "status": "PASS",
+      "verification": "V-01: clean run reproduces README table",
+      "evidence": ["E-01", "E-04", "E-05"],
+      "note": "All printed R² and p-values match as printed (3 decimals)"
+    },
+    {
+      "id": "C-02",
+      "status": "PASS",
+      "verification": "V-02: repeated runs N=50",
+      "evidence": ["E-02", "E-03", "E-04"],
+      "control": "NC-NOISE",
+      "note": "Wilson 95% CI [0.004, 0.105] contains 0.05"
+    },
+    {
+      "id": "C-03",
+      "status": "PASS",
+      "verification": "V-02",
+      "evidence": ["E-02", "E-03", "E-04"],
+      "control": "NC-SIGNAL",
+      "note": "Lower bound of Wilson CI 0.929 ≥ 0.90"
+    },
+    {
+      "id": "C-04",
+      "status": "PASS",
+      "verification": "V-02",
+      "evidence": ["E-02", "E-03", "E-04"],
+      "control": "NC-TREND",
+      "note": "PASS = limitation demonstrated, not capability on trended data. Lower bound of Wilson CI 0.583 > 0.20"
+    },
+    {
+      "id": "C-05",
+      "status": "INCONCLUSIVE",
+      "reason_code": "OUT_OF_SCOPE",
+      "note": "No claim made. See limitations.md"
+    }
+  ],
+  "properties_separate": {
+    "integrity": "sha256 per evidence item in evidence-manifest.json",
+    "provenance": "author-generated / author-executed / author-reported; AI assistance disclosed in README and article",
+    "reproducibility": "V-01/V-02 author-executed; independent: none",
+    "validity": "C-04 marks the validity boundary of naive permutation on trended data"
+  },
+  "negative_controls": [
+    {
+      "id": "NC-NOISE",
+      "N": 50,
+      "false_rejections": 1,
+      "rate": 0.020,
+      "wilson_ci_95": [0.004, 0.105]
+    },
+    {
+      "id": "NC-SIGNAL",
+      "N": 50,
+      "rejections": 50,
+      "rate": 1.000,
+      "wilson_ci_95": [0.929, 1.000]
+    },
+    {
+      "id": "NC-TREND",
+      "N": 50,
+      "false_rejections": 36,
+      "rate": 0.720,
+      "wilson_ci_95": [0.583, 0.825]
+    }
+  ]
+}

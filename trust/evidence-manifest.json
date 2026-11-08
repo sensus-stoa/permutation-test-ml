@@ -1,0 +1,102 @@
+{
+  "schema": "trust-manifest/v3.5",
+  "protocol_version": "CV0-TrustLayer-v3.5",
+  "date": "2026-11-09",
+  "object": {
+    "repo": "https://github.com/sensus-stoa/permutation-test-ml",
+    "commit": "8b3058bf75afae31f4887e25b260611580c9ce73"
+  },
+  "criteria_lock": {
+    "commit": "6169f91df2ab5290f304d97f19a3f3b89f4a2a33",
+    "date": "2026-11-09",
+    "note": "Criteria C-01..C-05 fixed in trust/claims.md at this commit. Later change requires new version marked post-hoc and re-run for PASS."
+  },
+  "evidence": [
+    {
+      "id": "E-01",
+      "type": "code",
+      "path": "src/permutation_test.py",
+      "sha256": "2b29a8c16b605b56512e0a55d788a4dc55d44a27e0ce41814787f23b29e12df7",
+      "role": "author-generated",
+      "disclosure": "public",
+      "note": "Main test script implementing permutation test with three scenarios"
+    },
+    {
+      "id": "E-02",
+      "type": "code",
+      "path": "experiments/repeated_runs.py",
+      "sha256": "d9e36d8afe551460d0ec247c9c2fce73d213cd2cedd6f471023638818bcaf24f",
+      "role": "author-generated",
+      "disclosure": "public",
+      "note": "Outer loop for Type I error rate measurement across repeated runs"
+    },
+    {
+      "id": "E-03",
+      "type": "dependencies",
+      "path": "requirements.txt",
+      "sha256": "a5d6c4a08bad924826f5f36dd8acbc28c7465de17b9230c66b6f419c2b188b66",
+      "role": "author-generated",
+      "disclosure": "public"
+    },
+    {
+      "id": "E-04",
+      "type": "summary",
+      "path": "README.md",
+      "sha256": "33f8eccdfaea088e3681b9033550dff84f54b1dea86b54af88811ab6f4a42a27",
+      "role": "author-reported",
+      "disclosure": "public",
+      "note": "Contains observed values and repeated-runs table; regenerated from E-01/E-02"
+    },
+    {
+      "id": "E-05",
+      "type": "run-output",
+      "path": "results/repeated_runs.csv",
+      "sha256": null,
+      "role": "author-executed",
+      "disclosure": "public",
+      "note": "results/ is gitignored; regenerate with: python experiments/repeated_runs.py --runs 50 --n-permutations 200"
+    },
+    {
+      "id": "E-06",
+      "type": "publication",
+      "url": "https://medium.com/@Ninja_Cat/permutation-test-for-ml-what-null-hypothesis-it-tests-and-what-it-does-not-prove-7a3224809251",
+      "date": "2026-11-06",
+      "role": "author-reported",
+      "disclosure": "public",
+      "note": "Medium article describing the three scenarios and limitations"
+    }
+  ],
+  "controls": [
+    {
+      "id": "NC-NOISE",
+      "description": "Pure noise, H0 true",
+      "N": 50,
+      "rejections": 1,
+      "rate": 0.020,
+      "wilson_ci_95": [0.004, 0.105],
+      "note": "Upper bound by Wilson CI (not rule-of-three, since rejections > 0)"
+    },
+    {
+      "id": "NC-SIGNAL",
+      "description": "Planted linear signal, H0 false",
+      "N": 50,
+      "rejections": 50,
+      "rate": 1.000,
+      "wilson_ci_95": [0.929, 1.000]
+    },
+    {
+      "id": "NC-TREND",
+      "description": "Two independent random walks, H0 true but naive shuffle invalid",
+      "N": 50,
+      "rejections": 36,
+      "rate": 0.720,
+      "wilson_ci_95": [0.583, 0.825],
+      "note": "Demonstrates limitation: naive permutation invalid under shared trend"
+    }
+  ],
+  "disclosure_levels": {
+    "public": "Open repository, article, and code",
+    "client": null,
+    "sealed": null
+  }
+}
