@@ -14,7 +14,9 @@ GO_BIN="${GO:-go}"
 }
 
 # stripped static binary; bin/tc and ~/.local/bin/tc stay hash-identical
-"$GO_BIN" build -ldflags "-s -w" -o bin/tc .
+# stripped, path-independent static binary; bin/tc, ~/.local/bin/tc and the
+# release artifact stay hash-identical for rebuild verification
+"$GO_BIN" build -trimpath -ldflags "-s -w" -o bin/tc .
 
 TARGET="${TC_INSTALL_DIR:-$HOME/.local/bin}"
 mkdir -p "$TARGET"
