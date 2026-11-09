@@ -14,3 +14,7 @@ results/*
 SIGNALS.md
 CONTACTS.md
 drafts/
+
+# trust checker: build artifact + auto-report
+scripts/trust_check/bin/
+trust_check_report.json
