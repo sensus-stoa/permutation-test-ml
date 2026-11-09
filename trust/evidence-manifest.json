@@ -7,9 +7,9 @@
     "commit": "8b3058bf75afae31f4887e25b260611580c9ce73"
   },
   "criteria_lock": {
-    "commit": "6169f91df2ab5290f304d97f19a3f3b89f4a2a33",
+    "commit": "c60ed769511b35d48bd0aab08834a2ffd0526da5",
     "date": "2026-11-09",
-    "note": "Criteria C-01..C-05 fixed in trust/claims.md at this commit. Later change requires new version marked post-hoc and re-run for PASS."
+    "note": "Criteria C-01..C-05 fixed in trust/claims.md at this commit. Later change requires new version marked post-hoc and re-run for PASS. Incident I-001: the original lock commit 6169f91 stored the file empty; the text was restored and re-locked at c60ed76, verified claim-by-claim against verdict.json V-PTM-001; criteria text unchanged, no re-run required. See trust/trust-incidents.md."
   },
   "evidence": [
     {
