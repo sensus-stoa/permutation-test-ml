@@ -320,8 +320,13 @@ func countPASS(claims []struct {
 	return n
 }
 
+// isGitRepo checks that root itself is a git work tree (direct .git entry:
+// a directory for normal clones, a file for worktrees/submodules). It
+// deliberately does NOT walk up: a validator must never inherit a parent
+// repository's git context (tmp dirs nested inside unrelated checkouts).
 func isGitRepo(root string) bool {
-	return exec.Command("git", "-C", root, "rev-parse", "--git-dir").Run() == nil
+	_, err := os.Stat(filepath.Join(root, ".git"))
+	return err == nil
 }
 
 func git(r *exec.Cmd) (string, error) {
