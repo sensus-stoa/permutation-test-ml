@@ -10,3 +10,12 @@
 - **Re-runs.** None required: criteria text not changed. Per spec, an empty criteria diff means existing PASS statuses remain valid.
 - **Status.** Resolved.
 - **Lesson.** A criteria-lock commit is a lock only if the locked text is IN the commit. At lock time, verify the committed blob is non-empty (`git shows <lock>:<file>` non-zero size) before running any verification against it. Secondary lesson: diagnose git anomalies with an unaliased git binary before trusting wrapper output.
+
+## I-002 — role vocabulary: spec §3.7 vs live author-* (2026-11-13)
+
+- **Symptom.** The published verdict V-PTM-001 uses roles `author-generated` / `author-executed` / `author-reported` in `trust/evidence-manifest.json`, while spec §3.7 names the provider-cycle roles `client-generated` / `client-executed` / `provider-verified` / `independently reproduced`. The vocabularies do not intersect; a strict spec-only enum would reject the published manifest, and editing the published artifact is not allowed.
+- **Cause.** V-PTM-001 is a self-audit without a client - a topology §3.7 does not name. The spec vocabulary presumes a provider-client relationship that does not exist in this repository's public track record.
+- **Decision (owner, 2026-11-13).** Two-vocabulary enum with explicit scope: `author-*` is the public self-audit vocabulary, allowed ONLY when no client is involved; client engagements use the §3.7 set exclusively. Mixing the two sets within one manifest is rejected by schema. `author-*` is not legacy; no migration of V-PTM-001 is planned or required.
+- **Implementation.** `engineering-verdict` commit introducing the two-vocabulary enum, the no-mix rule (`allOf` on the evidence array), the extended type enum (+config, log, seed, dataset), and negative tests NEG-4/NEG-5/NEG-6 in `schemas/intake_validate.py` (this entry's companion patch; see engineering-verdict git log, message starts with "feat: two-vocabulary roles"). Schema reference: `schemas/evidence-manifest.schema.json`, `$comment`.
+- **Status.** Resolved.
+- **Lesson.** When a spec names roles for a topology that does not yet exist (no client), the self-audit needs its own declared vocabulary with an explicit scope note - otherwise the gap surfaces as a schema conflict against the published artifact.
